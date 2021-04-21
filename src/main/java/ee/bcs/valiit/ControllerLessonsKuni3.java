@@ -107,8 +107,10 @@ public class ControllerLessonsKuni3 {
 
     //lesson2b
     //http://localhost:8080/exercise1?n
-    @GetMapping(exercise1)
-    public int exercise1(RequestParam("n") int n {return Lesson2b.exercise1(n);}
+    @GetMapping("exercise1/midagi")
+    public int exercise1(@RequestParam("n") int n) {
+        return Lesson2b.exercise1(n);
+    }
 
 
     //lesson3 factorial
@@ -117,11 +119,6 @@ public class ControllerLessonsKuni3 {
     public int factorial(@RequestParam("x") int x) {
         return Lesson3.factorial(x);
     }
-
-
-
-
-
 
 
     //ülesanded Employee

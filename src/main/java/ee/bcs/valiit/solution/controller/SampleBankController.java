@@ -18,7 +18,6 @@ public class SampleBankController {
 
     @Autowired
     private SampleBankService sampleBankService;
-
     // http://localhost:8080/sample/bank/createAccount?accountNr=EE128&balance=2500
     @GetMapping("sample/bank/createAccount")
     public void createAccount(@RequestParam("accountNr") String accountNr,

@@ -31,8 +31,21 @@ public class RepositoryBank {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("dbAccNo", accountNr);
         Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
-        Double newBalance = balance + amount;
-        return "";
+        return "Account:" + accountNr + " balance is: " + balance;
+    }
+    public String withdrawMoney(String accountNr, Double amount) {
+        String sql = "SELECT account_balance FROM bank_accounts WHERE account_nr = :b";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("b", accountNr);
+        Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
+        return "Account:" + accountNr + " balance is: " + balance;
+    }
+    public String transferMoney(String fromAccountNr1, String toAccountNr2, Double amount) {
+        String sql = "SELECT account_balance FROM bank_accounts WHERE account_nr = :b";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("b", fromAccountNr1);
+        Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
+        return "Amount has to be positive";
     }
 
 

@@ -14,11 +14,22 @@ public class ServiceBank {
     public void createAccount1(String accountNr, Double balance) {
         repositoryBank.createAccount1(accountNr, balance);
     }
+
     public String getBalance(String accountNr) {
         return repositoryBank.getBalance(accountNr);
     }
+
     public String addDeposit(String accountNr, Double amount) {
-    return repositoryBank.addDeposit(accountNr, amount);
+        return repositoryBank.addDeposit(accountNr, amount);
+    }
+
+    public String withdrawMoney(String accountNr, Double amount) {
+        return repositoryBank.withdrawMoney(accountNr, amount);
+    }
+
+    public String transferMoney(String fromAccountNr1, String toAccountNr2, Double amount) {
+        return repositoryBank.transferMoney(fromAccountNr1, toAccountNr2, amount);
+
     }
 }
 

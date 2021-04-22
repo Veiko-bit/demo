@@ -33,6 +33,16 @@ public class RepositoryBank {
         Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
         return "Account:" + accountNr + " balance is: " + balance;
     }
+
+    public String updateBalance(String accountNr, Double amount) {
+        String sql2 = "UPDATE bank_accounts SET account_balance = :a WHERE account_nr = :b";
+        Map<String, Object> paramMap2 = new HashMap<>();
+        paramMap2.put("a", newBalance);
+        paramMap2.put("b", accountNr);
+        jdbcTemplate.update(sql2, paramMap2);
+        }
+    }
+
     public String withdrawMoney(String accountNr, Double amount) {
         String sql = "SELECT account_balance FROM bank_accounts WHERE account_nr = :b";
         Map<String, Object> paramMap = new HashMap<>();
@@ -47,6 +57,11 @@ public class RepositoryBank {
         Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
         return "Amount has to be positive";
     }
-
-
+    public String updateAccount(String fromAccountNr1, String toAccountNr2, Double amount) {
+        String sql2 = "SELECT account_balance FROM bank_accounts WHERE account_nr = :c";
+        Map<String, Object> paramMap2 = new HashMap<>();
+        paramMap2.put("c", toAccountNr2);
+        Double balance = jdbcTemplate.queryForObject(sql2, paramMap2, Double.class);
+        return "success";
+    }
 }

@@ -45,8 +45,8 @@ public class ControllerBankSqlCopy {
             Double newBalance = balance + amount;
             String sql2 = "UPDATE bank_accounts SET account_balance = :a WHERE account_nr = :b";
             Map<String, Object> paramMap2 = new HashMap<>();
-            paramMap.put("a", newBalance);
-            paramMap.put("b", accountNr);
+            paramMap2.put("a", newBalance);
+            paramMap2.put("b", accountNr);
             jdbcTemplate.update(sql2, paramMap2);
             return "Account:" + accountNr + " balance is: " + balance;
         } else {

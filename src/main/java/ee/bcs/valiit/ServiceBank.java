@@ -23,72 +23,50 @@ public class ServiceBank {
         return "Konto Balanss on: " + balance;
     }
 
-    public String addDeposit(String accountNr, Double amount) {
+    public Double addDeposit(String accountNr, Double amount) {
         if (amount > 0) {
-            Double balance = repositoryBank.addDeposit(accountNr, amount);
-            Double newBalance = balance + amount;
-            repositoryBank.addDeposit(accountNr, amount);
-            return "Account:" + accountNr + " balance is: " + balance;
+            Double balance = repositoryBank.getBalance(accountNr);
+            balance = balance + amount;
+            repositoryBank.updateBalance(accountNr, balance);
+            return balance;
+        } else {
+            return null;
+        }
+    }
+
+    public String withdrawMoney (String accountNr, Double amount) {
+        if (amount > 0) {
+            Double balance = repositoryBank.getBalance(accountNr);
+            balance = balance - amount;
+            repositoryBank.updateBalance(accountNr, balance);
+            if (balance >= 0) {
+                return "Account:" + accountNr + " balance is: " + balance;
+            } else {
+                return "not enough money";
+            }
         } else {
             return "Entered sum has to be positive";
-
+        }
     }
-
-    public String withdrawMoney(String accountNr, Double amount) {
-            if (amount > 0) {
-                String sql = "SELECT account_balance FROM bank_accounts WHERE account_nr = :b";
-                Map<String, Object> paramMap = new HashMap<>();
-                paramMap.put("b", accountNr);
-                Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
-                Double newBalance = balance - amount;
-                if (newBalance >= 0) {
-                    String sql2 = "UPDATE bank_accounts SET account_balance = :c WHERE account_nr = :b";
-                    Map<String, Object> paramMap2 = new HashMap<>();
-                    paramMap2.put("c", newBalance);
-                    paramMap2.put("b", accountNr);
-                    jdbcTemplate.update(sql2, paramMap2);
-                    return "Account:" + accountNr + " balance is: " + balance;
-                } else {
-                    return "not enough money";
-                }
+    public String transferMoney (String fromAccountNr1, String toAccountNr2, Double amount) {
+        if (amount > 0) {
+            Double balance = repositoryBank.getBalance (fromAccountNr1);
+            balance = balance - amount;
+            repositoryBank.updateBalance(fromAccountNr1, balance);
+            if (balance < 0) {
+                return "Not enough money";
             } else {
-                return "Entered sum has to be positive";
-    }
+                balance = repositoryBank.getBalance(toAccountNr2);
+                balance = balance + amount;
+                repositoryBank.updateBalance(toAccountNr2, balance);
 
-    public String transferMoney(String fromAccountNr1, String toAccountNr2, Double amount) {
-                if (amount > 0) {
-                    String sql = "SELECT account_balance FROM bank_accounts WHERE account_nr = :b";
-                    Map<String, Object> paramMap = new HashMap<>();
-                    paramMap.put("b", fromAccountNr1);
-                    Double balance = jdbcTemplate.queryForObject(sql, paramMap, Double.class);
-                    Double newBalance = balance - amount;
-                    if (newBalance < 0) {
 
-                        return "Not enough money";
-                    } else {
-                        String sql1 = "UPDATE bank_accounts SET account_balance = :c WHERE account_nr = :b";
-                        Map<String, Object> paramMap1 = new HashMap<>();
-                        paramMap1.put("c", newBalance);
-                        paramMap1.put("b", fromAccountNr1);
-                        jdbcTemplate.update(sql1, paramMap1);
 
-                        String sql2 = "SELECT account_balance FROM bank_accounts WHERE account_nr = :c";
-                        Map<String, Object> paramMap2 = new HashMap<>();
-                        paramMap2.put("c", toAccountNr2);
-                        balance = jdbcTemplate.queryForObject(sql2, paramMap2, Double.class);
-                        newBalance = balance + amount;
-                        String sql3 = "UPDATE bank_accounts SET account_balance = :d WHERE account_nr = :c";
-                        Map<String, Object> paramMap3 = new HashMap<>();
-                        paramMap3.put("a", newBalance);
-                        paramMap3.put("b", toAccountNr2);
-                        jdbcTemplate.update(sql3, paramMap3);
-                        return "success";
-                    }
-                }return "Amount has to be positive";;
-
+                return "success";
+            }
+        }return "Amount has to be positive";
     }
 }
-
 
 
 

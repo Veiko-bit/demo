@@ -10,7 +10,7 @@ import java.util.Map;
 public class ControllerBankSql {
     @Autowired
     private ServiceBank serviceBank;
-
+    @CrossOrigin
 
     //http://localhost:8080/veiko/bank/createAccount1?accountNumber1=EE123§balance=100
     @PostMapping("veiko/bank/createAccount1")

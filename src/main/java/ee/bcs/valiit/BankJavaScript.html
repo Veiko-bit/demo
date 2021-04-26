@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MegaBank</title>
+    <h1>MegaBank</h1>
+</head>
+<body>
+<h1>BankAccounts</h1>
+EE123: <input id="balance1">EE124:<input id="balance2">
+<p>
+    <button id="addDepositButton">Add</button>a: <input id="addMoney"><span id="EE123Answer"></span>
+</p>
+<p>
+    <button id="withdrawButton">Withdraw</button><input id="withdrawMoney"><span id="123Answer"></span>
+</p>
+<p>
+    <button id="transferButton">Transfer</button><input id="transferMoney">
+</p>
+<script>
+    let balance1 = document.getElementById("balance1");
+    let balance2 = document.getElementById("balance2");
+    let addMoney = document.getElementById("addMoney");
+    let withdrawMoney = document.getElementById("withdrawMoney");
+    let transferMoney = document.getElementById("transferMoney");
+    let addDepositButton = document.getElementById("addDepositButton");
+    let withdrawButton = document.getElementById("withdrawButton");
+    let transferButton = document.getElementById("transferButton");
+    addDepositButton.onclick = function () {
+        let EE123Answer = document.getElementById(addMoney);
+        let a = addMoney.value;
+        addMoney.innerText = a;
+        if (Number(balance1) >= 0 && Number(a) > 0) {
+            EE123Answer.innerText = balance1 + a;
+        } else {
+            EE123Answer.innerText = balance1;
+
+        }
+    }
+</script>
+
+</body>
+</html>

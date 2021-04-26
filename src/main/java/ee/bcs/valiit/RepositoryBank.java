@@ -13,6 +13,7 @@ public class RepositoryBank {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     public void createAccount1(String accountNr, Double balance) {
+
         String sql = "INSERT INTO bank_accounts(account_number, account_balance) VALUES(:dbAccNo, :dbAmount)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("dbAccNo",accountNr);

@@ -14,7 +14,7 @@ public class RepositoryBank {
 
     public void createAccount1(String accountNr, Double balance) {
 
-        String sql = "INSERT INTO bank_accounts(account_number, account_balance) VALUES(:dbAccNo, :dbAmount)";
+        String sql = "INSERT INTO bank_accounts(account_nr, account_balance) VALUES(:dbAccNo, :dbAmount)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("dbAccNo",accountNr);
         paramMap.put("dbAmount",balance);

@@ -34,4 +34,5 @@ public class RepositoryBank {
         paramMap1.put("b", accountNr);
         jdbcTemplate.update(sql1, paramMap1);
     }
+
 }

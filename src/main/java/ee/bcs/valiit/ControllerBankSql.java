@@ -39,8 +39,8 @@ public class ControllerBankSql {
         return serviceBank.withdrawMoney(accountNr, amount);
     }
 
-    //http://localhost:8080/veiko/bank2/account/EE123/EE124/20
-    @PutMapping("veiko/bank2/account/{accountNumber1}/{accountNumber2}/{transferMoney}")
+    //http://localhost:8080/veiko/bank3/account/EE123/EE124/20
+    @PutMapping("veiko/bank3/account/{accountNumber1}/{accountNumber2}/{transferMoney}")
     public void transferMoney(@PathVariable("accountNumber1") String fromAccountNr1,
                                 @PathVariable("accountNumber2") String toAccountNr2,
                                 @PathVariable("transferMoney") Double amount) {

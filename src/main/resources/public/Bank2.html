@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<h2>Create Account</h2>
+<input id="accountNr">
+<button id="createAccountButton">Create Account</button>
+<button id="getBalanceButton">Get Balance</button>
+<script>
+    let accountNr = document.getElementById("accountNr");
+    let createButton = document.getElementById("createAccountButton");
+    let getBalanceButton = document.getElementById("getBalanceButton");
+    createButton.onclick = function () {
+
+        let url = "http://localhost:8080/veiko/bank2/createAccount1?accountNumber1=" + accountNr.value + "&balance=50"
+        let configuration = {
+            method: 'POST',
+        }
+        fetch(url, configuration);
+    }
+    getBalanceButton.onclick = function () {
+
+        let url = "http://localhost:8080/veiko/bank2/account/" + accountNr.value
+        let configuration = {
+            method: 'GET',
+            'accountNr': accountNr.value,
+            'balance': 0
+        }
+        fetch(url, configuration)
+            .then(response => response.text())
+            .then(response => alert(response))
+    }
+</script>
+
+</body>
+<body>
+<h3>Add and Withdraw</h3>
+<input id="accountNr2">
+<button id="account_nrButton">Account Number</button>
+<input id="amount1">
+<button id="addDepositButton">Add Deposit</button>
+<input id="amount">
+<button id="withdrawButton">Withdraw</button>
+
+<script>
+   let accountNr2 = document.getElementById("accountNr2");
+   let amount1 = document.getElementById("amount1");
+   let amount = document.getElementById("amount");
+   let addDepositButton = document.getElementById("addDepositButton");
+   let withdrawButton = document.getElementById("withdrawButton");
+   addDepositButton.onclick = function () {
+       //http://localhost:8080/veiko/bank2/deposit/EE123/100
+       let url = "http://localhost:8080/veiko/bank2/deposit/" + accountNr2 + "/" + amount1.value
+           let configuration = {
+               method: 'PUT',
+           }
+           fetch(url, configuration)
+               .then(response => response.text())
+               .then(response => alert(response))
+   }
+   withdrawButton.onclick = function () {
+       //http://localhost:8080/veiko/bank3/withdraw/EE123/30
+       let url = "http://localhost:8080/veiko/bank3/withdraw/" + accountNr2 + "/" + amount.value
+        let configuration = {
+           method: 'PUT',
+        }
+        fetch(url, configuration)
+            .then(response => response.text())
+            .then(response => alert(response))
+   }
+</script>
+
+</body>
+<body>
+<h4>Transfer</h4>
+<input id="accountNr3">
+<button id="account_nr3">Transfer from</button>
+<input id="accountNr4">
+<button id="account_nr4">Transfer to</button>
+<input id="amount2">
+<button id="transferButton">Transfer Money</button>
+
+<script>
+    let accountNr3 = document.getElementById("accountNr3");
+    let amount1 = document.getElementById("amount1");
+    let amount = document.getElementById("amount");
+    let addDepositButton = document.getElementById("addDepositButton");
+</script>
+</body>
+
+</html>

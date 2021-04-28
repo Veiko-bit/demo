@@ -20,12 +20,14 @@ public class ControllerBankSql {
     }
 
     //http://localhost:8080/veiko/bank2/account/EE123
+    @CrossOrigin
     @GetMapping("veiko/bank2/account/{accountNumber1}")
     public String getBalance(@PathVariable("accountNumber1") String accountNr) {
         return serviceBank.getBalance(accountNr);
     }
 
     //http://localhost:8080/veiko/bank2/deposit/EE123/100
+    @CrossOrigin
     @PutMapping("veiko/bank2/deposit/{accountNumber1}/{addDeposit}")
     public Double addDeposit(@PathVariable("accountNumber1") String accountNr,
                              @PathVariable("addDeposit") Double amount) {
@@ -33,6 +35,7 @@ public class ControllerBankSql {
     }
 
     //http://localhost:8080/veiko/bank2/withdraw/EE123/30
+    @CrossOrigin
     @PutMapping("veiko/bank2/withdraw/{accountNumber}/{withdrawMoney}")
     public Double withdrawMoney(@PathVariable("accountNumber") String accountNr,
                                 @PathVariable("withdrawMoney") Double amount) {
@@ -40,6 +43,7 @@ public class ControllerBankSql {
     }
 
     //http://localhost:8080/veiko/bank3/account/EE123/EE124/20
+    @CrossOrigin
     @PutMapping("veiko/bank3/account/{accountNumber1}/{accountNumber2}/{transferMoney}")
     public void transferMoney(@PathVariable("accountNumber1") String fromAccountNr1,
                                 @PathVariable("accountNumber2") String toAccountNr2,

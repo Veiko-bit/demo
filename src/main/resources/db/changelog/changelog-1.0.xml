@@ -7,10 +7,12 @@
     <changeSet id="21_04_2021 bank_accounts" author="Veiko">
             <createTable tableName="bank_accounts">
                     <column name="clients" type="text"/>
-                    <column name="account_nr" type="text">
+                    <column name="account_nr" type="text"/>
+                    <column name="password" type="text"/>
+                    <column name="username" type="text">
                         <constraints primaryKey="true"/>
                     </column>
-                        <column name="account_balance" type="Numeric"/>
+                    <column name="account_balance" type="Numeric"/>
 
             </createTable>
     </changeSet>

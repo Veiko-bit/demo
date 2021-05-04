@@ -12,11 +12,13 @@ public class ControllerBankSql {
     private ServiceBank serviceBank;
     @CrossOrigin
 
-    //http://localhost:8080/veiko/bank2/createAccount1?accountNumber1=EE123&balance=100
+    //http://localhost:8080/veiko/bank2/createAccount1?accountNumber1=EE123&balance=100&username=veiko1&password=password1
     @PostMapping("veiko/bank2/createAccount1")
     public void createAccount1(@RequestParam("accountNumber1") String accountNr,
-                               @RequestParam("balance") Double balance) {
-        serviceBank.createAccount1 (accountNr, balance);
+                               @RequestParam("balance") Double balance,
+                               @RequestParam("username") String username,
+                               @RequestParam("password") String password) {
+        serviceBank.createAccount1 (accountNr, balance, username, password);
     }
 
     //http://localhost:8080/veiko/bank2/account/EE123

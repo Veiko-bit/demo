@@ -14,13 +14,6 @@ import java.util.Date;
 public class BankSqlLoginController {
     @PostMapping("/public/login")
     public String sampleLogin(@RequestBody LoginRequest loginRequest){
-        Date today = new Date();
-        Date tokenExpirationDate = new Date(today.getTime()+1000*60*60*24);
-        JwtBuilder jwtBuilder = Jwts.builder()
-                .setExpiration(tokenExpirationDate)
-                .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256,"c2VjcmV6")
-                .claim("username", loginRequest.getUsername());
-        return jwtBuilder.compact();
+        return
     }
 }

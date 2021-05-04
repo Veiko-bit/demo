@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="21_04_2021 bank_accounts" author="Veiko">
+    <changeSet id="21_04_2021 bank_accounts" author="veiko">
             <createTable tableName="bank_accounts">
                     <column name="clients" type="text"/>
                     <column name="account_nr" type="text"/>

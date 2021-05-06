@@ -18,10 +18,10 @@
 **Liquibase**: https://drive.google.com/file/d/1NCgQCfaVX4PRSqk5oVYPD4xhkJhJsewc/view?usp=sharing  
 **Exceptions**:  
 **Hibernate, Spring Data**: https://drive.google.com/file/d/1eWV24l4MApKUK8S3d9s9NciMpFaTYjdT/view?usp=sharing    
-**ee.bcs.valiit.security**: https://drive.google.com/file/d/105CpgMW1lrLfVDRvNootiNYGuRcaN8iR/view?usp=sharing  
+**Security**: https://drive.google.com/file/d/105CpgMW1lrLfVDRvNootiNYGuRcaN8iR/view?usp=sharing  
 **Scheduled Tasks**:  
 **Testing**:   
-**JWT/ee.bcs.valiit.security**:  
+**JWT/Security**:  
 **Transactions**:  
 ### HTML / CSS
 **HTML, CSS**: https://drive.google.com/file/d/1iSoZQu-qyF94MYtQVu1i10pYyM1-k664/view?usp=sharing  

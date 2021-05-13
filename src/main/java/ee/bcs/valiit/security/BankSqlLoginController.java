@@ -13,7 +13,7 @@ import java.util.Date;
 @RestController
 public class BankSqlLoginController {
     @PostMapping("/public/login")
-    public String sampleLogin(@RequestBody LoginRequest loginRequest){
-        return
+    public void  sampleLogin(@RequestBody LoginRequest loginRequest){
+
     }
 }
